@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">AcademyPractice</string>
+
+    <string name="dialog_native">Native Dialog</string>
+    <string name="dialog_personalized">Personalized Dialog</string>
+    <string name="dialog_fragment">Dialog Fragment</string>
+
+    <string name="titles_main">Genshin Profiles</string>
+    <string name="titles_subtitle">An academy practice App</string>
+    <string name="titles_char_select">Select Character</string>
+    <string name="titles_background_select">Select Background</string>
+    <string name="titles_team_select">Select 4 characters</string>
+
+    <string name="option_edit_avatar">Edit Avatar</string>
+    <string name="option_edit_frame">Edit Frame</string>
+    <string name="option_accept">Accept</string>
+    <string name="option_cancel">Cancel</string>
+
+    <string name="nav_characters">Characters</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_rate">Rate App</string>
+    <string name="nav_share">Share</string>
+    <string name="nav_help">Help</string>
+    <string name="nav_close">Close App</string>
+    <string name="nav_drawer_open">Open navigation drawer</string>
+    <string name="nav_drawer_close">Close navigation drawer</string>
+
+    <string name="btn_profiles">Profiles</string>
+    <string name="btn_clean">Clean</string>
+    <string name="btn_add">Add</string>
+
+    <string name="info_profile_name">Profile Empty</string>
+    <string name="title_activity_camera">CameraActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+</resources>

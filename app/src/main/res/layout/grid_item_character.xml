@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <FrameLayout
+            android:id="@+id/thumb_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            >
+
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <ImageView
+                android:id="@+id/element_type"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_anemo"
+                android:layout_gravity="top|start"
+                android:layout_margin="3dp"/>
+
+            <ImageView
+                android:id="@+id/stars_type"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_stars_five"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="3dp"/>
+
+
+
+        </FrameLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/char_name"
+            style="@style/transparentBlackBgTitleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/thumb_layout"
+            android:layout_centerHorizontal="true"
+            android:text="Roberto"
+            android:textColor="@color/black" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/char_weapon"
+            style="@style/transparentBlackBgTitleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/char_name"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:textColor="@color/black" />
+
+
+    </RelativeLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
