@@ -4,14 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.academypractice.R
-import com.example.academypractice.model.Characters
+import com.example.academypractice.data.Character
+import com.example.academypractice.model.CharacterResult
 
 class CharacterListAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var viewType: Int = 0
-    lateinit var characterList: ArrayList<Characters>
+    var characterList: List<Character> = emptyList()
 
-    fun setList(list: ArrayList<Characters>, viewType: Int) {
+    fun setList(list: List<Character>, viewType: Int) {
 
         this.viewType = viewType
         characterList = list

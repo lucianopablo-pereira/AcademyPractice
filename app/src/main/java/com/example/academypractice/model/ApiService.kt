@@ -1,6 +1,7 @@
 package com.example.academypractice.model
 
 
+import com.example.academypractice.data.Character
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Url
@@ -11,11 +12,9 @@ interface ApiService{
     fun getCharacterList(): Call<List<String>>
 
     @GET
-    fun getCharacterData(@Url url: String): Call<Characters>
+    fun getCharacterData(@Url url: String): Call<Character>
 
-//    @GET("characters")
-//    fun getCharacterList(): Call<List<Character>>
-
-
+    @GET
+    fun getCharacterResult(@Url url: String): Call<CharacterResult>
 
 }

@@ -1,31 +1,26 @@
 package com.example.academypractice.view
 
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.ImageView
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
-import androidx.camera.core.ImageCapture
-import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
-import com.bumptech.glide.Glide
 import com.example.academypractice.R
 import com.example.academypractice.databinding.ActivityMainBinding
 import com.example.academypractice.databinding.CustomDialogBinding
 import com.example.academypractice.model.ImageSetter
 import com.example.academypractice.settings.Snackbars
-import com.example.academypractice.viewmodel.CharacterListViewModel
+import com.example.academypractice.view.activities.CameraActivity
+import com.example.academypractice.view.activities.CharacterListActivity
+import com.example.academypractice.viewmodel.CharacterViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -35,9 +30,9 @@ class MainActivity : AppCompatActivity() {
 
 
     lateinit var binding: ActivityMainBinding
-    private val viewModel: CharacterListViewModel by lazy {
+    private val viewModel: CharacterViewModel by lazy {
         ViewModelProvider(this).get(
-            CharacterListViewModel::class.java
+            CharacterViewModel::class.java
         )
     }
 
@@ -54,18 +49,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val img = registerForActivityResult(
-            ActivityResultContracts.GetContent(),
-            ActivityResultCallback {
-                ImageSetter.setAvatarImage(it, binding.mainCharAvatar)
-            })
 
-        binding.mainCharAvatar.setOnClickListener {
-            img.launch("image/*")
-        }
-        binding.btnAdd.setOnClickListener { openDialogPersonalized(img) }
-        binding.btnProfile.setOnClickListener { openDialogNative() }
-        binding.btnClean.setOnClickListener {}
+
+//        binding.mainCharAvatar.setOnClickListener {
+//            img.launch("image/*")
+//        }
+//        binding.btnAdd.setOnClickListener { openDialogPersonalized(img) }
+//        binding.btnProfile.setOnClickListener { openDialogNative() }
+//        binding.btnClean.setOnClickListener {}
 
         val toolbar = binding.topAppBar
         setSupportActionBar(toolbar)
@@ -94,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        initRecycler()
+//        initRecycler()
 
     }
 
@@ -107,88 +98,89 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun openDialogNative() {
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.titles_char_select)
-            .setNeutralButton(resources.getString(R.string.option_cancel)) { dialog, _ ->
-                dialog.dismiss()
-            }
-            .setPositiveButton(resources.getString(R.string.option_accept)) { dialog, which ->
-
-                when (checkedItem) {
-                    0 -> {
-                        binding.userName.text = characters[0]
-                    }
-                    1 -> {
-                        binding.userName.text = characters[1]
-                    }
-                    2 -> {
-                        binding.userName.text = characters[2]
-                    }
-                    3 -> {
-                        binding.userName.text = characters[3]
-                    }
-                }
-
-                Snackbar.make(
-                    binding.root,
-                    "now you are ${characters[checkedItem]}",
-                    Snackbar.LENGTH_SHORT
-                ).show()
-
-            }
-            .setSingleChoiceItems(characters, checkedItem) { dialog, chosenItem ->
-                checkedItem = chosenItem
-            }
-            .setIcon(R.drawable.empty_user)
-            .setCancelable(false)
-            .show()
-    }
-
-    private fun openDialogPersonalized(img: ActivityResultLauncher<String>) {
-
-        val customDialogBinding = CustomDialogBinding.inflate(layoutInflater)
-
-
-        customDialogBinding.fromStorage.setOnClickListener {
-            img.launch("image/*")
-            customDialog?.dismiss()
-            customDialog = null
-        }
-
-        customDialogBinding.fromCamera.setOnClickListener {
-            startActivity(Intent(this, CameraActivity::class.java))
-
-        }
-
-        customDialogBinding.btnCancel.setOnClickListener {
-            customDialog?.dismiss()
-            customDialog = null
-        }
-
-//        customDialogBinding.btnAccept.setOnClickListener {
+//    private fun openDialogNative() {
+//        MaterialAlertDialogBuilder(this)
+//            .setTitle(R.string.titles_char_select)
+//            .setNeutralButton(resources.getString(R.string.option_cancel)) { dialog, _ ->
+//                dialog.dismiss()
+//            }
+//            .setPositiveButton(resources.getString(R.string.option_accept)) { dialog, which ->
+//
+//                when (checkedItem) {
+//                    0 -> {
+//                        binding.userName.text = characters[0]
+//                    }
+//                    1 -> {
+//                        binding.userName.text = characters[1]
+//                    }
+//                    2 -> {
+//                        binding.userName.text = characters[2]
+//                    }
+//                    3 -> {
+//                        binding.userName.text = characters[3]
+//                    }
+//                }
+//
+//                Snackbar.make(
+//                    binding.root,
+//                    "now you are ${characters[checkedItem]}",
+//                    Snackbar.LENGTH_SHORT
+//                ).show()
+//
+//            }
+//            .setSingleChoiceItems(characters, checkedItem) { dialog, chosenItem ->
+//                checkedItem = chosenItem
+//            }
+//            .setIcon(R.drawable.empty_user)
+//            .setCancelable(false)
+//            .show()
+//    }
+//
+//    private fun openDialogPersonalized(img: ActivityResultLauncher<String>) {
+//
+//        val customDialogBinding = CustomDialogBinding.inflate(layoutInflater)
+//
+//
+//        customDialogBinding.fromStorage.setOnClickListener {
+//            img.launch("image/*")
+//            customDialog?.dismiss()
+//            customDialog = null
+//        }
+//
+//        customDialogBinding.fromCamera.setOnClickListener {
+//            startActivity(Intent(this, CameraActivity::class.java))
 //
 //        }
+//
+//        customDialogBinding.btnCancel.setOnClickListener {
+//            customDialog?.dismiss()
+//            customDialog = null
+//        }
+//
+////        customDialogBinding.btnAccept.setOnClickListener {
+////
+////        }
+//
+//        customDialog = MaterialAlertDialogBuilder(this)
+//            .setView(customDialogBinding.root)
+//            .setCancelable(false)
+//            .show()
+//
+//    }
+//
+//    private fun initRecycler() {
+//        binding.teamRecyclerview.layoutManager = LinearLayoutManager(this)
+//        binding.teamRecyclerview.adapter = CharacterListAdapter()
+//
+//        viewModel.getCharacterList()
+//        viewModel.getCharacter().observe(this, Observer { list ->
+//
+//            (binding.teamRecyclerview.adapter as CharacterListAdapter)
+//                .setList(list, 1)
+//
+//        })
+//
+//    }
 
-        customDialog = MaterialAlertDialogBuilder(this)
-            .setView(customDialogBinding.root)
-            .setCancelable(false)
-            .show()
-
-    }
-
-    private fun initRecycler() {
-        binding.teamRecyclerview.layoutManager = LinearLayoutManager(this)
-        binding.teamRecyclerview.adapter = CharacterListAdapter()
-
-        viewModel.getCharacterList()
-        viewModel.characterDataList.observe(this, Observer { list ->
-
-            (binding.teamRecyclerview.adapter as CharacterListAdapter)
-                .setList(list, 1)
-
-        })
-
-    }
 
 }

@@ -17,12 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AcademyPractice">
         <activity
-            android:name=".view.CameraActivity"
+            android:name=".view.activities.CameraActivity"
             android:exported="true"
             android:label="@string/title_activity_camera"
             android:theme="@style/Theme.AcademyPractice.NoActionBar" />
         <activity
-            android:name=".view.CharacterListActivity"
+            android:name=".view.activities.CharacterListActivity"
             android:exported="true" />
         <activity
             android:name=".view.MainActivity"

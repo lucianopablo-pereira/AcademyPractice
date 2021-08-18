@@ -28,88 +28,13 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <FrameLayout
-            android:id="@+id/profile_images"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/purple_200"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-            <ImageView
-                android:id="@+id/main_bg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/purple_1500"/>
-
-            <ImageView
-                android:id="@+id/main_char_avatar"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/empty_user"
-                android:layout_gravity="center"/>
-
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/user_name"
-            style="@style/purpleBgTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:text="@string/info_profile_name"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/profile_images" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/team_recyclerview"
+        <fragment
+            android:name="com.example.academypractice.view.fragments.ProfileFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/purple_500"
-            android:padding="5dp"
-            app:layout_constraintBottom_toTopOf="@+id/main_buttons"
-            app:layout_constraintTop_toBottomOf="@+id/user_name" />
-
-        <LinearLayout
-            android:id="@+id/main_buttons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@color/purple_200"
-            android:orientation="horizontal"
-            android:weightSum="3"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_profile"
-                style="@style/MainScreenButtons"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_characters"
-                android:text="@string/btn_profiles" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_add"
-                style="@style/MainScreenButtons"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_add"
-                android:text="@string/btn_add" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_clean"
-                style="@style/MainScreenButtons"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_delete"
-                android:drawableTint="@color/white"
-                android:text="@string/btn_clean" />
-
-        </LinearLayout>
-
+            android:id="@+id/profile_fragment"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
